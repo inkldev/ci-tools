@@ -15,7 +15,7 @@ jobs:
           node-version: '16'
 
       - name: 🛠 Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: 🏗 Build the project
         run: yarn run build
