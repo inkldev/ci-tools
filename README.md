@@ -4,9 +4,17 @@ This project is a collection of Command Line Interface (CLI) tools for Continuou
 
 ## 🛠 Installation
 
-Execute the following command in linux shell:
+First, you need to generate a [Personal Access Token] with access to this repository and export it as a `CI_TOOLS_TOKEN` environment variable.
+
+Then, in CI environment execute the following command:
 ```shell
-curl -sL $TODO_URL | bash
+curl https://api.github.com/repos/inkldev/ci-tools/contents/install.sh -H "Authorization: token $CI_TOOLS_TOKEN" -H 'Accept: application/vnd.github.v4.raw' -sL | bash
+```
+
+Upon successful installation you should see:
+```
+-- ci-tools vX.Y.Z is now installed
+-- All Done!
 ```
 
 ## ⚡ Usage
@@ -59,3 +67,4 @@ Finally, [pkg] is used to bundle the project into a single self-contained execut
 [Typescript]: https://www.typescriptlang.org/
 [yarn]: https://yarnpkg.com/
 [pkg]: https://github.com/vercel/pkg#readme
+[Personal Access Token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
