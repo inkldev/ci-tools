@@ -87,7 +87,7 @@ fi
 
 # Since we've gotten this far we know everything succeeded. We'll just
 # let the developer know everything is ready and take our leave.
-echo "-- ✅ ci-tools v$VERSION is now installed"
-echo "-- 🎉 All Done!"
+echo "✅ ci-tools v$VERSION is now installed"
+echo "🎉 All Done!"
 
 exit 0
