@@ -1,0 +1,6 @@
+.github
+.idea
+bin
+dist
+node_modules
+res

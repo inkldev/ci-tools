@@ -4,17 +4,15 @@ This project is a collection of Command Line Interface (CLI) tools for Continuou
 
 ## 🛠 Installation
 
-First, you need to generate a [Personal Access Token] with access to this repository and export it as a `CI_TOOLS_TOKEN` environment variable.
-
-Then, in CI environment execute the following command:
+The CI tools are distributed as a single binary files that is installed by a shell script via the following command:
 ```shell
-curl https://api.github.com/repos/inkldev/ci-tools/contents/install.sh -H "Authorization: token $CI_TOOLS_TOKEN" -H 'Accept: application/vnd.github.v4.raw' -sL | bash
+curl -sL https://raw.githubusercontent.com/inkldev/ci-tools/main/install.sh | bash
 ```
 
 Upon successful installation you should see:
 ```
--- ci-tools vX.Y.Z is now installed
--- All Done!
+✅ ci-tools vX.Y.Z is now installed
+🎉 All Done!
 ```
 
 ## ⚡ Usage
