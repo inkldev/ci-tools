@@ -17,12 +17,6 @@ panic() {
   exit 1
 }
 
-# Make sure that the Github Personal Access Token was provided
-
-if [ -z "$CI_TOOLS_TOKEN" ]; then
-  panic "environment variable 'CI_TOOLS_TOKEN' is not set"
-fi
-
 # For info about why we place the binary at this location, see
 # https://unix.stackexchange.com/a/8658
 INSTALL_DIR="/usr/local/bin"
@@ -55,20 +49,16 @@ if [ "$UNAME" != "linux" ]; then
   panic "this operating system is not supported"
 fi
 
-BIN_FILE="$INSTALL_DIR/ci-tools"
 
 # We need to get the ID of the latest binary asset so that
 # we can generate a download link accessible via REST API
 
-LATEST_RELEASE_URL="https://api.github.com/repos/inkldev/ci-tools/releases/latest"
-ASSET_ID=$(curl -H "Authorization: token $CI_TOOLS_TOKEN" "$LATEST_RELEASE_URL" | jq .assets[0].id)
-ASSET_URL="https://api.github.com/repos/inkldev/ci-tools/releases/assets/$ASSET_ID"
+LATEST_RELEASE_URL="https://github.com/inkldev/ci-tools/releases/latest/download/ci-tools"
+BIN_FILE="$INSTALL_DIR/ci-tools"
 
-echo "📥 Downloading binary from $ASSET_URL"
-sudo curl "$ASSET_URL" \
+echo "📥 Downloading binary from '$LATEST_RELEASE_URL' to '$BIN_FILE'"
+sudo curl "$LATEST_RELEASE_URL" \
   --output "$BIN_FILE" \
-  --header "Authorization: token $CI_TOOLS_TOKEN" \
-  --header 'Accept: application/octet-stream' \
   --location \
   --progress-bar
 
