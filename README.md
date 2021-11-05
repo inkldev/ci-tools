@@ -16,6 +16,10 @@ Upon successful installation you should see:
 ✅ ci-tools vX.Y.Z is now installed
 🎉 All Done!
 ```
+By default, the shell script will download the latest version of `ci-tools`. You can specify a release version via the `CI_TOOLS_VERSION` environment variable:
+```shell
+export CI_TOOLS_VERSION=X.Y.Z
+```
 
 ## ⚡ Usage
 

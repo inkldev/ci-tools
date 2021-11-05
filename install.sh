@@ -50,14 +50,17 @@ if [ "$UNAME" != "linux" ]; then
 fi
 
 
-# We need to get the ID of the latest binary asset so that
-# we can generate a download link accessible via REST API
+# If version was not given, default to latest version
+if [ -z "$CI_TOOLS_VERSION" ]; then
+  RELEASE_URL="https://github.com/inkldev/ci-tools/releases/latest/download/ci-tools"
+else
+  RELEASE_URL="https://github.com/inkldev/ci-tools/releases/download/v$CI_TOOLS_VERSION/ci-tools"
+fi
 
-LATEST_RELEASE_URL="https://github.com/inkldev/ci-tools/releases/latest/download/ci-tools"
 BIN_FILE="$INSTALL_DIR/ci-tools"
 
-echo "📥 Downloading binary from '$LATEST_RELEASE_URL' to '$BIN_FILE'"
-sudo curl "$LATEST_RELEASE_URL" \
+echo "📥 Downloading binary from '$RELEASE_URL' to '$BIN_FILE'"
+sudo curl "$RELEASE_URL" \
   --output "$BIN_FILE" \
   --location \
   --progress-bar
