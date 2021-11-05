@@ -1,5 +1,7 @@
 # 🤖 CI Tools
 
+[![Build & Release](https://github.com/inkldev/ci-tools/actions/workflows/build-release.yaml/badge.svg)](https://github.com/inkldev/ci-tools/actions/workflows/build-release.yaml)
+
 This project is a collection of Command Line Interface (CLI) tools for Continuous Integration (CI) environments powered by [Node.js].
 
 ## 🛠 Installation
@@ -18,6 +20,9 @@ Upon successful installation you should see:
 ## ⚡ Usage
 
 ### ⏫ Bump version code
+
+Fetches the version code of the latest Android app release, increments it by 1 and saves it in the given `build.gradle` file.
+
 ```shell
 ci-tools bump_version_code \
   --gradle_file=app/build.gradle \
@@ -26,15 +31,27 @@ ci-tools bump_version_code \
   --app_id=1:1234567890:android:01234567890abcdef
 ```
 
-## 🧑‍💻 Development info
+### 📲 Invite testers to release
 
-This Node.js project is configured to use [Typescript], which brings compile-time type-safety.
+Invites testers in the given group(s) to the latest Android app release as determined by version code.
+
+```shell
+ci-tools bump_version_code \
+  --gradle_file=app/build.gradle \
+  --service_account=service_account.json \
+  --project_number=1234567890 \
+  --app_id=1:1234567890:android:01234567890abcdef
+```
+
+## 🧑‍💻 Development
+
+This [Node.js] project is configured to use [Typescript], which brings compile-time type-safety.
 
 Furthermore, this project uses [yarn] for package management.
 
 Finally, [pkg] is used to bundle the project into a single self-contained executable binary. The [Typescript] transpilation module format is set to CommonJS since the [pkg] bundler does not fully support ESM yet.
 
-### ⚙ Prerequisites
+### ⚙ Requirements
 - [x] [Node.js] v16
 - [x] [yarn] v1
 
@@ -65,4 +82,3 @@ Finally, [pkg] is used to bundle the project into a single self-contained execut
 [Typescript]: https://www.typescriptlang.org/
 [yarn]: https://yarnpkg.com/
 [pkg]: https://github.com/vercel/pkg#readme
-[Personal Access Token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
