@@ -29,10 +29,10 @@ Fetches the version code of the latest Android app release, increments it by 1 a
 
 ```shell
 ci-tools bump_version_code \
+  --app_id=1:1234567890:android:01234567890abcdef \
   --gradle_file=app/build.gradle \
-  --service_account=service_account.json \
   --project_number=1234567890 \
-  --app_id=1:1234567890:android:01234567890abcdef
+  --service_account=service_account.json 
 ```
 
 ### 📲 Invite testers to release
@@ -40,11 +40,11 @@ ci-tools bump_version_code \
 Invites testers in the given group(s) to the latest Android app release as determined by version code.
 
 ```shell
-ci-tools bump_version_code \
-  --gradle_file=app/build.gradle \
-  --service_account=service_account.json \
+ci-tools invite_testers_to_release \
+  --app_id=1:1234567890:android:01234567890abcdef \
+  --group='android-testers' \
   --project_number=1234567890 \
-  --app_id=1:1234567890:android:01234567890abcdef
+  --service_account=service_account.json
 ```
 
 ## 🧑‍💻 Development
