@@ -1,6 +1,6 @@
 {
   "name": "ci-tools",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "CLI tools for CI environments, powered by Node.js",
   "bin": "dist/main.js",
   "author": "inkl team",
@@ -13,8 +13,8 @@
     "version": "echo $npm_package_version"
   },
   "dependencies": {
-    "googleapis": "^89.0.0",
-    "node-fetch": "^2.6.1",
+    "googleapis": "^95.0.0",
+    "node-fetch": "^3.2.2",
     "replace-in-file": "^6.3.2",
     "yargs": "^17.2.1"
   },
