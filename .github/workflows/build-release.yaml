@@ -20,6 +20,12 @@ jobs:
       - name: 🏗 Build the project
         run: yarn run build
 
+      - name: 📤 Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: ci-tools
+          path: bin/ci-tools
+
       - name: 🛠 Set environment variables
         if: github.ref == 'refs/heads/main'
         run: echo "VERSION_TAG=v$(yarn run --silent version)" >> $GITHUB_ENV
