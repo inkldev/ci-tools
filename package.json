@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "googleapis": "^95.0.0",
-    "node-fetch": "^3.2.2",
+    "node-fetch": "^2.6.1",
     "replace-in-file": "^6.3.2",
     "yargs": "^17.2.1"
   },
