@@ -1,16 +1,23 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { bumpVersionCode } from './bump_version_code'
+import { updateVersionCode } from './update_version_code'
 import { deployToGooglePlay } from './deploy_to_google_play'
 import { inviteTestersToRelease } from './invite_testers_to_release'
 
+const CMD_SYNC_VERSION_CODE = 'sync_version_code'
 const CMD_BUMP_VERSION_CODE = 'bump_version_code'
 const CMD_DEPLOY_TO_GOOGLE_PLAY = 'deploy_to_google_play'
 const CMD_INVITE_TESTERS_TO_RELEASE = 'invite_testers_to_release'
 
 async function main() {
     const argv = yargs(hideBin(process.argv))
-        .command(CMD_BUMP_VERSION_CODE, 'Bump version in the given gradle file', {
+        .command(CMD_SYNC_VERSION_CODE, 'Sync version code in the given gradle file', {
+            app_id: { type: 'string', demandOption: true },
+            gradle_file: { type: 'string', demandOption: true },
+            project_number: { type: 'string', demandOption: true },
+            service_account: { type: 'string', demandOption: true }
+        })
+        .command(CMD_BUMP_VERSION_CODE, 'Bump version code in the given gradle file', {
             app_id: { type: 'string', demandOption: true },
             gradle_file: { type: 'string', demandOption: true },
             project_number: { type: 'string', demandOption: true },
@@ -37,12 +44,22 @@ async function main() {
     const command = argv._[0]
 
     switch (command) {
-        case CMD_BUMP_VERSION_CODE: {
-            await bumpVersionCode(
+        case CMD_SYNC_VERSION_CODE: {
+            await updateVersionCode(
                 argv.app_id as string,
                 argv.gradle_file as string,
                 argv.project_number as string,
                 argv.service_account as string
+            )
+            break
+        }
+        case CMD_BUMP_VERSION_CODE: {
+            await updateVersionCode(
+                argv.app_id as string,
+                argv.gradle_file as string,
+                argv.project_number as string,
+                argv.service_account as string,
+                1
             )
             break
         }
