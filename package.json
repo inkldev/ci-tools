@@ -1,6 +1,6 @@
 {
   "name": "ci-tools",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI tools for CI environments, powered by Node.js",
   "bin": "dist/main.js",
   "author": "inkl team",

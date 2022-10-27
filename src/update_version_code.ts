@@ -19,6 +19,6 @@ export async function updateVersionCode(
     await replaceInFile({
         files: gradleFile,
         from: new RegExp('versionCode.+'),
-        to: `versionCode ${newVersionCode}`
+        to: `versionCode ${gradleFile.endsWith(".kts") ? "= " : ""} ${newVersionCode}`
     })
 }
