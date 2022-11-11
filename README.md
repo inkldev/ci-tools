@@ -55,6 +55,8 @@ Furthermore, this project uses [yarn] for package management.
 
 Finally, [pkg] is used to bundle the project into a single self-contained executable binary. The [Typescript] transpilation module format is set to CommonJS since the [pkg] bundler does not fully support ESM yet.
 
+[`package.json`](./package.json) is the single source of truth for version.
+
 ### ⚙ Requirements
 - [x] [Node.js] v16
 - [x] [yarn] v1
